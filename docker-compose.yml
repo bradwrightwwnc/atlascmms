@@ -22,7 +22,7 @@ services:
       DB_URL: postgres/atlas
       DB_USER: rootUser
       DB_PWD: mypassword
-      API_HOST: ${API_HOST:-http://localhost:8080}
+      API_HOST: ${API_HOST:-http://localhost:8070}
       FASTSPRING_PWD: ${FASTSPRING_PWD}
       FASTSPRING_USER: ${FASTSPRING_USER}
       FRONT_URL: ${FRONT_URL}
@@ -35,12 +35,12 @@ services:
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
     ports:
-      - "8080:8080"
+      - "8070:8080"
   frontend:
     build:
       context: frontend
       args:
-        REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:8080/}
+        REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:8070/}
         REACT_APP_GOOGLE_KEY: ${REACT_APP_GOOGLE_KEY}
         REACT_APP_GOOGLE_TRACKING_ID: ${REACT_APP_GOOGLE_TRACKING_ID}
         REACT_APP_JWT_SECRET_KEY: ${JWT_SECRET_KEY}
