@@ -5,10 +5,10 @@ services:
     container_name: atlas_db
     environment:
       POSTGRES_DB: atlas
-      POSTGRES_USER: rootUser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: atlas
+      POSTGRES_PASSWORD: quardles
     ports:
-      - "5432:5432"
+      - "4432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
   api:
@@ -19,9 +19,9 @@ services:
       - minio
     environment:
       DB_URL: postgres/atlas
-      DB_USER: rootUser
-      DB_PWD: mypassword
-      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8080}
+      DB_USER: atlas
+      DB_PWD: quardles
+      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8070}
       FASTSPRING_PWD: ${FASTSPRING_PWD}
       FASTSPRING_USER: ${FASTSPRING_USER}
       PUBLIC_FRONT_URL: ${PUBLIC_FRONT_URL}
@@ -42,7 +42,7 @@ services:
       INVITATION_VIA_EMAIL: ${INVITATION_VIA_EMAIL:-false}
       ENABLE_EMAIL_NOTIFICATIONS: ${ENABLE_EMAIL_NOTIFICATIONS:-false}
     ports:
-      - "8080:8080"
+      - "8070:8080"
   frontend:
     image: intelloop/atlas-cmms-frontend
     container_name: atlas-cmms-frontend
@@ -55,7 +55,7 @@ services:
         CLOUD_VERSION: false
         NODE_ENV: production
     ports:
-      - "3000:3000"
+      - "3200:3000"
     depends_on:
       - api
   minio:
