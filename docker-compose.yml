@@ -72,5 +72,5 @@ services:
     command: server --address ":9000" --console-address ":9001" /data
 
 volumes:
-  postgres_data:
-  minio_data:
+  postgres:
+  minio:
